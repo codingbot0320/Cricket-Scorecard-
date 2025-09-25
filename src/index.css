@@ -2,60 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Cricket Scorecard Design System - TV Broadcast Style */
+/* Cricket Scorecard Design System - Modern Vibrant Style */
 
 @layer base {
   :root {
-    /* Cricket field inspired dark theme */
-    --background: 120 15% 8%;
-    --foreground: 0 0% 98%;
+    /* Fresh cricket stadium theme - bright and modern */
+    --background: 210 20% 98%;
+    --foreground: 222.2 84% 4.9%;
 
-    /* Scoreboard card styling */
-    --card: 120 12% 12%;
-    --card-foreground: 0 0% 95%;
+    /* Scoreboard card styling - clean white cards */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 120 10% 15%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    /* Neon cricket theme colors */
-    --primary: 195 100% 50%;
-    --primary-foreground: 120 15% 8%;
+    /* Cricket green primary - field inspired */
+    --primary: 142 76% 36%;
+    --primary-foreground: 355.7 100% 97.3%;
 
-    --secondary: 120 8% 20%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222.2 84% 4.9%;
 
-    --muted: 120 6% 18%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 210 40% 98%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    /* Electric accent for highlights */
-    --accent: 60 100% 50%;
-    --accent-foreground: 120 15% 8%;
+    /* Cricket orange accent - stadium lights */
+    --accent: 24 70% 50%;
+    --accent-foreground: 0 0% 98%;
 
     /* Cricket red for dismissals */
-    --destructive: 0 85% 55%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-    /* Boundary colors */
-    --boundary-four: 280 100% 70%;
-    --boundary-six: 45 100% 55%;
+    /* Boundary colors - bright and exciting */
+    --boundary-four: 263 70% 50%;
+    --boundary-six: 32 95% 44%;
 
     /* UI elements */
-    --border: 120 8% 25%;
-    --input: 120 10% 15%;
-    --ring: 195 100% 50%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 76% 36%;
 
-    /* Cricket field gradient */
-    --gradient-field: linear-gradient(135deg, hsl(120 20% 6%), hsl(120 15% 12%));
-    --gradient-scoreboard: linear-gradient(180deg, hsl(120 12% 12%), hsl(120 8% 8%));
+    /* Cricket stadium gradients - sky to field */
+    --gradient-field: linear-gradient(135deg, hsl(200 100% 85%), hsl(142 40% 85%));
+    --gradient-scoreboard: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 20% 96%));
+    --gradient-celebration: linear-gradient(45deg, hsl(32 95% 44%), hsl(24 70% 50%), hsl(142 76% 36%));
     
-    /* Glow effects */
-    --glow-primary: 0 0 20px hsl(195 100% 50% / 0.3);
-    --glow-boundary: 0 0 30px hsl(280 100% 70% / 0.5);
-    --glow-six: 0 0 40px hsl(45 100% 55% / 0.6);
+    /* Enhanced glow effects */
+    --glow-primary: 0 0 20px hsl(142 76% 36% / 0.4);
+    --glow-boundary: 0 0 30px hsl(263 70% 50% / 0.5);
+    --glow-six: 0 0 40px hsl(32 95% 44% / 0.6);
+    --glow-success: 0 0 25px hsl(142 76% 36% / 0.3);
+    --glow-celebration: 0 0 50px hsl(24 70% 50% / 0.7);
 
-    /* Animations */
+    /* Smooth animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-celebration: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
     --radius: 0.75rem;
 
@@ -77,42 +81,43 @@
   }
 
   .dark {
-    --background: 120 15% 8%;
-    --foreground: 0 0% 98%;
+    /* Dark mode maintains modern contrast */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card: 120 12% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 120 10% 15%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 195 100% 50%;
-    --primary-foreground: 120 15% 8%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 355.7 100% 97.3%;
 
-    --secondary: 120 8% 20%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 120 6% 18%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 60 100% 50%;
-    --accent-foreground: 120 15% 8%;
+    --accent: 24 70% 50%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 85% 55%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 120 8% 25%;
-    --input: 120 10% 15%;
-    --ring: 195 100% 50%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142 76% 36%;
 
-    /* Same cricket colors and effects for dark mode */
-    --boundary-four: 280 100% 70%;
-    --boundary-six: 45 100% 55%;
-    --gradient-field: linear-gradient(135deg, hsl(120 20% 6%), hsl(120 15% 12%));
-    --gradient-scoreboard: linear-gradient(180deg, hsl(120 12% 12%), hsl(120 8% 8%));
-    --glow-primary: 0 0 20px hsl(195 100% 50% / 0.3);
-    --glow-boundary: 0 0 30px hsl(280 100% 70% / 0.5);
-    --glow-six: 0 0 40px hsl(45 100% 55% / 0.6);
+    /* Enhanced dark mode cricket colors */
+    --boundary-four: 263 70% 50%;
+    --boundary-six: 32 95% 44%;
+    --gradient-field: linear-gradient(135deg, hsl(220 40% 8%), hsl(142 20% 12%));
+    --gradient-scoreboard: linear-gradient(180deg, hsl(222.2 84% 4.9%), hsl(217.2 32.6% 17.5%));
+    --glow-primary: 0 0 20px hsl(142 76% 36% / 0.4);
+    --glow-boundary: 0 0 30px hsl(263 70% 50% / 0.5);
+    --glow-six: 0 0 40px hsl(32 95% 44% / 0.6);
   }
 }
 
@@ -128,26 +133,42 @@
 
 @layer utilities {
   .scoreboard-card {
-    @apply bg-scoreboard-gradient border border-border/50 rounded-lg backdrop-blur-sm;
+    @apply bg-scoreboard-gradient border border-border rounded-xl shadow-lg backdrop-blur-sm hover:shadow-xl transition-all duration-300;
   }
   
   .neon-glow {
-    @apply shadow-glow-primary;
+    @apply shadow-glow-primary hover:shadow-glow-success;
   }
   
   .boundary-glow {
-    @apply shadow-glow-boundary;
+    @apply shadow-glow-boundary animate-pulse;
   }
   
   .six-glow {
-    @apply shadow-glow-six;
+    @apply shadow-glow-six animate-pulse;
+  }
+  
+  .celebration-glow {
+    @apply shadow-glow-celebration;
   }
   
   .cricket-button {
-    @apply transition-all duration-200 hover:scale-105 active:scale-95;
+    @apply transition-all duration-300 hover:scale-110 hover:shadow-lg active:scale-95 transform-gpu;
   }
   
   .score-display {
-    @apply font-mono text-xl font-bold text-primary;
+    @apply font-mono text-xl font-bold text-primary animate-pulse;
+  }
+  
+  .floating-animation {
+    @apply animate-bounce hover:animate-none;
+  }
+  
+  .slide-up-fade {
+    @apply animate-slide-up-fade;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
   }
 }

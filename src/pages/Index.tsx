@@ -19,9 +19,9 @@ const Index = () => {
 
         {/* Feature Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <Card className="scoreboard-card hover:neon-glow transition-all duration-300">
+          <Card className="scoreboard-card card-hover animate-card-entrance">
             <CardHeader className="text-center">
-              <Play className="w-12 h-12 mx-auto text-primary mb-4" />
+              <Play className="w-12 h-12 mx-auto text-primary mb-4 floating-animation" />
               <CardTitle className="text-primary">Quick Setup</CardTitle>
               <CardDescription>
                 Set up teams, players, and match details in minutes
@@ -29,9 +29,9 @@ const Index = () => {
             </CardHeader>
           </Card>
 
-          <Card className="scoreboard-card hover:neon-glow transition-all duration-300">
+          <Card className="scoreboard-card card-hover animate-card-entrance" style={{ animationDelay: '0.2s' }}>
             <CardHeader className="text-center">
-              <Trophy className="w-12 h-12 mx-auto text-accent mb-4" />
+              <Trophy className="w-12 h-12 mx-auto text-accent mb-4 floating-animation" />
               <CardTitle className="text-accent">Live Scoring</CardTitle>
               <CardDescription>
                 Real-time scoring with celebration effects and stats
@@ -39,9 +39,9 @@ const Index = () => {
             </CardHeader>
           </Card>
 
-          <Card className="scoreboard-card hover:neon-glow transition-all duration-300">
+          <Card className="scoreboard-card card-hover animate-card-entrance" style={{ animationDelay: '0.4s' }}>
             <CardHeader className="text-center">
-              <BarChart3 className="w-12 h-12 mx-auto text-boundary-four mb-4" />
+              <BarChart3 className="w-12 h-12 mx-auto text-boundary-four mb-4 floating-animation" />
               <CardTitle className="text-boundary-four">Match Analysis</CardTitle>
               <CardDescription>
                 Complete scorecards and exportable match summaries
@@ -51,22 +51,22 @@ const Index = () => {
         </div>
 
         {/* CTA Section */}
-        <Card className="scoreboard-card text-center p-8">
+        <Card className="scoreboard-card card-hover text-center p-8 animate-slide-up-fade">
           <CardContent className="pt-6">
-            <h2 className="text-3xl font-bold text-primary mb-4">
+            <h2 className="text-3xl font-bold text-primary mb-4 animate-pulse">
               Ready to Score Your Match?
             </h2>
             <p className="text-muted-foreground mb-8 text-lg">
               Start with match setup or explore the features
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="cricket-button neon-glow">
+              <Button asChild size="lg" className="cricket-button celebration-glow">
                 <Link to="/setup">
                   <Play className="w-5 h-5 mr-2" />
                   Start New Match
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="cricket-button">
+              <Button asChild variant="outline" size="lg" className="cricket-button neon-glow">
                 <Link to="/live">
                   <Trophy className="w-5 h-5 mr-2" />
                   Continue Match

@@ -259,7 +259,7 @@ const MatchSetup = () => {
                     <div key={team.id} className="space-y-4">
                       <h3 className="text-lg font-semibold text-accent">{team.name || `Team ${teamIndex + 1}`}</h3>
                       
-                      <div className="flex gap-2">
+              <div className="flex gap-2">
                         <Input
                           placeholder="Player name"
                           value={selectedTeam === teamIndex ? newPlayerName : ""}
@@ -273,6 +273,7 @@ const MatchSetup = () => {
                               addPlayer();
                             }
                           }}
+                          className="animate-slide-up-fade"
                         />
                         <Button 
                           onClick={() => {
@@ -280,21 +281,25 @@ const MatchSetup = () => {
                             addPlayer();
                           }}
                           size="icon"
-                          className="cricket-button"
+                          className="cricket-button celebration-glow animate-number-pop"
                         >
                           <Plus className="w-4 h-4" />
                         </Button>
                       </div>
                       
                       <div className="space-y-2 max-h-40 overflow-y-auto">
-                        {team.players.map((player) => (
-                          <div key={player.id} className="flex items-center justify-between bg-secondary/20 rounded p-2">
+                        {team.players.map((player, idx) => (
+                          <div 
+                            key={player.id} 
+                            className="flex items-center justify-between bg-secondary/20 rounded p-2 animate-slide-up-fade"
+                            style={{ animationDelay: `${idx * 0.1}s` }}
+                          >
                             <span className="text-sm">{player.name}</span>
                             <Button
                               onClick={() => removePlayer(teamIndex, player.id)}
                               size="icon"
                               variant="ghost"
-                              className="h-6 w-6 text-destructive hover:text-destructive"
+                              className="h-6 w-6 text-destructive hover:text-destructive cricket-button"
                             >
                               <X className="w-3 h-3" />
                             </Button>

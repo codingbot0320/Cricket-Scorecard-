@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useNavigate } from "react-router-dom";
 import { Trophy, Target, Clock, Zap, AlertTriangle } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import ConfettiCelebration from "@/components/ConfettiCelebration";
 
 const LiveScoring = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const LiveScoring = () => {
   const [newBatsman, setNewBatsman] = useState("");
   const [newBowler, setNewBowler] = useState("");
   const [celebration, setCelebration] = useState<'four' | 'six' | 'wicket' | null>(null);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
     if (!state.match) {
@@ -57,9 +59,11 @@ const LiveScoring = () => {
     
     if (runs === 4) {
       setCelebration('four');
+      setShowConfetti(true);
       toast({ title: "FOUR! 🏏", description: `${striker?.name} hits a boundary!` });
     } else if (runs === 6) {
       setCelebration('six');
+      setShowConfetti(true);
       toast({ title: "SIX! 🚀", description: `${striker?.name} hits it out of the park!` });
     }
     
@@ -116,9 +120,16 @@ const LiveScoring = () => {
 
   return (
     <div className="min-h-screen p-4">
+      {/* Confetti Celebration */}
+      <ConfettiCelebration 
+        type={celebration || 'four'} 
+        show={showConfetti} 
+        onComplete={() => setShowConfetti(false)}
+      />
+      
       {/* Celebration Overlay */}
       {celebration && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-background/80 backdrop-blur-sm">
           <div className={`text-8xl font-bold animate-boundary-celebration ${
             celebration === 'four' ? 'text-boundary-four boundary-glow' :
             celebration === 'six' ? 'text-boundary-six six-glow' :
@@ -132,22 +143,22 @@ const LiveScoring = () => {
 
       <div className="container mx-auto max-w-6xl space-y-6">
         {/* Main Scoreboard */}
-        <Card className="scoreboard-card neon-glow">
+        <Card className="scoreboard-card celebration-glow animate-card-entrance">
           <CardHeader className="pb-4">
             <CardTitle className="text-center">
               <div className="flex justify-between items-center">
-                <span className="text-lg text-muted-foreground">{match.venue}</span>
-                <Badge variant="outline" className="text-primary">{match.overs} Overs</Badge>
+                <span className="text-lg text-muted-foreground animate-slide-up-fade">{match.venue}</span>
+                <Badge variant="outline" className="text-primary animate-pulse">{match.overs} Overs</Badge>
               </div>
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-3 gap-6">
               {/* Team Score */}
-              <div className="text-center space-y-2">
+              <div className="text-center space-y-2 animate-slide-up-fade">
                 <h3 className="text-xl font-semibold text-accent">{battingTeam.name}</h3>
                 <div className="space-y-1">
-                  <div className="score-display text-4xl">
+                  <div className="score-display text-4xl animate-number-pop">
                     {innings.runs}/{innings.wickets}
                   </div>
                   <div className="text-muted-foreground">
@@ -157,16 +168,16 @@ const LiveScoring = () => {
               </div>
 
               {/* Run Rates */}
-              <div className="text-center space-y-4">
+              <div className="text-center space-y-4 animate-slide-up-fade" style={{ animationDelay: '0.2s' }}>
                 <div className="flex items-center justify-center text-sm text-muted-foreground">
-                  <Clock className="w-4 h-4 mr-1" />
+                  <Clock className="w-4 h-4 mr-1 animate-spin" style={{ animationDuration: '3s' }} />
                   Current Run Rate
                 </div>
                 <div className="score-display text-2xl">{currentRunRate}</div>
                 {match.currentInnings === 2 && (
                   <>
                     <div className="flex items-center justify-center text-sm text-muted-foreground">
-                      <Target className="w-4 h-4 mr-1" />
+                      <Target className="w-4 h-4 mr-1 animate-pulse" />
                       Required Rate
                     </div>
                     <div className="score-display text-2xl">{requiredRunRate}</div>
@@ -175,10 +186,10 @@ const LiveScoring = () => {
               </div>
 
               {/* Current Partnership */}
-              <div className="text-center space-y-2">
+              <div className="text-center space-y-2 animate-slide-up-fade" style={{ animationDelay: '0.4s' }}>
                 <h3 className="text-lg font-semibold text-boundary-four">Partnership</h3>
                 <div className="space-y-1">
-                  <div className="text-2xl font-bold text-primary">
+                  <div className="text-2xl font-bold text-primary animate-pulse">
                     {(strikerStats?.runs || 0) + (innings.battingStats.find(s => s.playerId === innings.nonStriker)?.runs || 0)}
                   </div>
                   <div className="text-sm text-muted-foreground">
@@ -245,13 +256,14 @@ const LiveScoring = () => {
                   <Button
                     key={runs}
                     onClick={() => handleScore(runs)}
-                    className={`cricket-button ${
-                      runs === 4 ? 'boundary-glow text-boundary-four' :
-                      runs === 6 ? 'six-glow text-boundary-six' : 'neon-glow'
+                    className={`cricket-button animate-number-pop ${
+                      runs === 4 ? 'boundary-glow text-boundary-four hover:animate-boundary-celebration' :
+                      runs === 6 ? 'six-glow text-boundary-six hover:animate-boundary-celebration' : 
+                      'neon-glow hover:celebration-glow'
                     }`}
                     size="lg"
                   >
-                    {runs}
+                    <span className="text-xl font-bold">{runs}</span>
                   </Button>
                 ))}
               </div>
@@ -260,11 +272,11 @@ const LiveScoring = () => {
               <Button
                 onClick={handleWicket}
                 variant="destructive"
-                className="w-full cricket-button mb-4"
+                className="w-full cricket-button mb-4 animate-wicket-flash hover:animate-pulse"
                 size="lg"
               >
-                <AlertTriangle className="w-4 h-4 mr-2" />
-                WICKET
+                <AlertTriangle className="w-4 h-4 mr-2 animate-bounce" />
+                <span className="text-lg font-bold">WICKET</span>
               </Button>
 
               {/* Extras */}

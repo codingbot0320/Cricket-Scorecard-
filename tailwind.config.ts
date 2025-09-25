@@ -47,6 +47,9 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Cricket specific colors
+        "boundary-four": "hsl(var(--boundary-four))",
+        "boundary-six": "hsl(var(--boundary-six))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -63,27 +66,52 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      backgroundImage: {
+        "field-gradient": "var(--gradient-field)",
+        "scoreboard-gradient": "var(--gradient-scoreboard)",
+      },
+      boxShadow: {
+        "glow-primary": "var(--glow-primary)",
+        "glow-boundary": "var(--glow-boundary)", 
+        "glow-six": "var(--glow-six)",
+      },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "score-pulse": {
+          "0%, 100%": { transform: "scale(1)", opacity: "1" },
+          "50%": { transform: "scale(1.1)", opacity: "0.8" },
+        },
+        "wicket-flash": {
+          "0%, 100%": { backgroundColor: "hsl(var(--card))" },
+          "25%, 75%": { backgroundColor: "hsl(var(--destructive))" },
+          "50%": { backgroundColor: "hsl(var(--card))" },
+        },
+        "boundary-celebration": {
+          "0%": { transform: "scale(1) rotate(0deg)" },
+          "25%": { transform: "scale(1.2) rotate(-5deg)" },
+          "50%": { transform: "scale(1.3) rotate(5deg)" },
+          "75%": { transform: "scale(1.2) rotate(-2deg)" },
+          "100%": { transform: "scale(1) rotate(0deg)" },
+        },
+        "float-up": {
+          "0%": { transform: "translateY(0px)", opacity: "1" },
+          "100%": { transform: "translateY(-30px)", opacity: "0" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "score-pulse": "score-pulse 0.6s ease-in-out",
+        "wicket-flash": "wicket-flash 0.8s ease-in-out",
+        "boundary-celebration": "boundary-celebration 0.8s ease-in-out",
+        "float-up": "float-up 2s ease-out forwards",
       },
     },
   },
